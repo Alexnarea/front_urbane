@@ -1,0 +1,59 @@
+<nz-table nzBordered [nzData]="listOfData" nzSize="middle" ngSkipHydration>
+  <thead>
+    <tr>
+      <th nzWidth="15%">First Name</th>
+      <th nzWidth="15%">Last Name</th>
+      <th nzWidth="15%">Role</th>
+      <th nzWidth="15%">Department</th>
+      <th nzWidth="15%">Hire Date</th>
+      <th nzWidth="15%">Salary</th>
+      <th nzWidth="10%">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of listOfData" class="editable-row">
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.id" (click)="editEmployee(data)">
+          {{ data.firstName }}
+        </div>
+        <input *ngIf="editId === data.id" nz-input [(ngModel)]="data.firstName" (blur)="updateEmployee(data)" />
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.id" (click)="editEmployee(data)">
+          {{ data.lastName }}
+        </div>
+        <input *ngIf="editId === data.id" nz-input [(ngModel)]="data.lastName" (blur)="updateEmployee(data)" />
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.id" (click)="editEmployee(data)">
+          {{ data.role }}
+        </div>
+        <input *ngIf="editId === data.id" nz-input [(ngModel)]="data.role" (blur)="updateEmployee(data)" />
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.id" (click)="editEmployee(data)">
+          {{ data.department }}
+        </div>
+        <input *ngIf="editId === data.id" nz-input [(ngModel)]="data.department" (blur)="updateEmployee(data)" />
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.id" (click)="editEmployee(data)">
+          {{ data.hireDate | date: 'yyyy-MM-dd' }}
+        </div>
+        <nz-date-picker *ngIf="editId === data.id" [(ngModel)]="data.hireDate" (ngModelChange)="updateEmployee(data)"></nz-date-picker>
+      </td>
+      <td>
+        <div class="editable-cell" [hidden]="editId === data.id" (click)="editEmployee(data)">
+          {{ data.salary }}
+        </div>
+        <nz-input-number *ngIf="editId === data.id" [(ngModel)]="data.salary" [nzMin]="0" [nzStep]="100" (ngModelChange)="updateEmployee(data)"></nz-input-number>
+      </td>
+      <td>
+        <div class="action-buttons">
+          <button nz-button nzType="link" (click)="deleteEmployee(data.id)">Delete</button>
+          <button nz-button nzType="link" *ngIf="editId !== data.id" (click)="editEmployee(data)">Edit</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

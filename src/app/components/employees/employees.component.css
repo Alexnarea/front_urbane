@@ -1,0 +1,32 @@
+/* Estilos para el formulario */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .nz-form-item {
+    margin-bottom: 16px;
+  }
+  
+  .nz-form-label {
+    font-weight: bold;
+  }
+  
+  /* Estilos para la tabla */
+  nz-table {
+    margin-top: 20px;
+  }
+  
+  nz-table th,
+  nz-table td {
+    text-align: center;
+  }
+  
+  .nz-table td button {
+    margin: 0 5px;
+  }
+  
